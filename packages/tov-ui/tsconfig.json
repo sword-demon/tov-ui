@@ -1,0 +1,12 @@
+{
+    "extends": [
+        "../../tsconfig.json"
+    ],
+    "compilerOptions": {},
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.vue",
+        "src/**/*.d.ts",
+        "src/**/*.tsx"
+    ]
+}
