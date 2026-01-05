@@ -1,7 +1,7 @@
-import antfu from "@antfu/eslint-config";
+import antfu from '@antfu/eslint-config'
 
 export default antfu({
-    rules: {
-        "no-console": "off",
-    }
+  rules: {
+    'no-console': 'off',
+  },
 })
