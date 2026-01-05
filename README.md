@@ -1,54 +1,73 @@
-# Vue 3 + TypeScript + Vite
+# tov-ui
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+基于 Vue 3 + TypeScript 的组件库，使用 pnpm workspace 管理 monorepo 结构。
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## 特性
 
-## 安装依赖到 workspace 中
+- Vue 3.5 + TypeScript 5.9
+- pnpm workspace monorepo
+- VitePress 文档站点 + 组件 Demo 展示
+- @antfu/eslint-config 代码规范
+- Husky + lint-staged 提交校验
+
+## 快速开始
 
 ```bash
-pnpm add eslint @antfu/eslint-config -Dw
+# 安装依赖
+pnpm install
+
+# 启动文档开发服务器
+pnpm docs:dev
+
+# 构建文档
+pnpm docs:build
 ```
 
-## ESLint 保存不生效问题排查
-
-### 问题现象
-
-VSCode 保存文件时 ESLint 自动修复不生效。
-
-### 排查步骤
-
-1. 检查 `.vscode/settings.json` 配置：
-   - `source.fixAll` 需要设为 `"always"`，而非 `"explicit"`
-   - 确保 `eslint.useFlatConfig: true`
-
-2. 确认 ESLint 扩展已安装：`dbaeumer.vscode-eslint`
-
-3. 命令行测试 ESLint 是否正常：
-   ```bash
-   npx eslint <file-path>
-   ```
-
-### 常见问题
-
-**TypeScript 版本不兼容**
+## 目录结构
 
 ```
-TypeError: Error while loading rule 'ts/no-invalid-this': Cannot read properties of undefined
+tov-ui/
+├── packages/tov-ui/src/   # 组件库源码
+│   └── <component>/
+│       ├── index.ts       # 组件入口
+│       ├── index.md       # 组件文档
+│       └── demos/         # 组件示例
+├── docs/                  # 文档页面
+└── .vitepress/            # VitePress 配置
 ```
 
-原因：`@typescript-eslint` 版本与 TypeScript 版本不匹配。
+## 开发指南
 
-| 包 | 支持的 TypeScript 版本 |
-|---|---|
-| `@typescript-eslint` 6.x | `<5.4.0` |
-| `@typescript-eslint` 7.x+ | `>=5.4.0` |
+### 添加新组件
 
-解决方案：
-- 降级 TypeScript：`pnpm add -D typescript@~5.3.3`
-- 或升级 ESLint 配置包（如换用 `@antfu/eslint-config`）
+1. 在 `packages/tov-ui/src/` 下创建组件目录
+2. 编写 `index.ts` 组件入口
+3. 编写 `index.md` 组件文档
+4. 在 `demos/` 下添加示例
 
-### VSCode 配置参考
+### 文档路径映射
+
+VitePress 配置了路径重写：
+
+| 源路径 | 访问路径 |
+|--------|----------|
+| `docs/(.*)` | `/(.*)` |
+| `packages/tov-ui/src/:comp/(.*)` | `/components/:comp/(.*)` |
+
+### 代码规范
+
+```bash
+# 手动运行 ESLint 修复
+npx eslint . --fix
+```
+
+提交时自动运行 lint-staged。
+
+---
+
+## ESLint 配置参考
+
+### VSCode 配置
 
 ```json
 {
@@ -58,3 +77,40 @@ TypeError: Error while loading rule 'ts/no-invalid-this': Cannot read properties
   }
 }
 ```
+
+### 常见问题
+
+**保存时 ESLint 自动修复不生效**
+
+1. 确认 `.vscode/settings.json` 中 `source.fixAll` 设为 `"always"`
+2. 确认 `eslint.useFlatConfig: true`
+3. 确认已安装 ESLint 扩展 `dbaeumer.vscode-eslint`
+
+**TypeScript 版本不兼容错误**
+
+```
+TypeError: Error while loading rule 'ts/no-invalid-this'
+```
+
+原因：`@typescript-eslint` 版本与 TypeScript 版本不匹配。
+
+| @typescript-eslint | TypeScript |
+|--------------------|------------|
+| 6.x | < 5.4.0 |
+| 7.x+ | >= 5.4.0 |
+
+解决方案：
+- 降级 TypeScript: `pnpm add -D typescript@~5.3.3`
+- 或升级 ESLint 配置包
+
+---
+
+## 安装依赖到 workspace
+
+```bash
+pnpm add <package> -Dw
+```
+
+## License
+
+MIT

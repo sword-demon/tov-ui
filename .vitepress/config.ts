@@ -18,6 +18,7 @@ export default defineConfig({
       { text: '工具', link: '/utils/' },
       { text: 'Git', link: '/Git' },
       { text: 'ESlint', link: '/ESlint' },
+      { text: 'husky', link: '/READ' },
     ],
 
     sidebar: {
