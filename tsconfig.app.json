@@ -12,5 +12,6 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noUncheckedSideEffectImports": true
-  }
+  },
+  "include": ["src/**/*", ".vitepress/**/*"]
 }
