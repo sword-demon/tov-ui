@@ -1,5 +1,5 @@
 {
-  "name": "tov-ui",
+  "name": "@tov-ui/utils",
   "version": "1.0.0",
   "packageManager": "pnpm@10.15.1",
   "description": "",
@@ -9,8 +9,5 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "@tov-ui/utils": "workspace:*"
   }
 }

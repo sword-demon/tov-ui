@@ -1,6 +1,10 @@
+import path from 'node:path'
 // import vue from '@vitejs/plugin-vue'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import { vitepressDemo } from 'vite-plugin-vitepress-demo'
+
+const baseUrl = fileURLToPath(new URL('.', import.meta.url))
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -11,4 +15,12 @@ export default defineConfig({
       glob: ['**/demos/*.vue'],
     }),
   ],
+  resolve: {
+    alias: [
+      {
+        find: /^@tov-ui\/utils/,
+        replacement: path.resolve(baseUrl, 'packages/utils/src'),
+      },
+    ],
+  },
 })

@@ -49,7 +49,13 @@ importers:
         specifier: ^3.1.4
         version: 3.2.1(typescript@5.9.3)
 
-  packages/tov-ui: {}
+  packages/tov-ui:
+    dependencies:
+      '@tov-ui/utils':
+        specifier: workspace:*
+        version: link:../utils
+
+  packages/utils: {}
 
 packages:
 

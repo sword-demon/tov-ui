@@ -2,12 +2,7 @@
   "extends": [
     "../../tsconfig.json"
   ],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@tov-ui/utils": ["../utils/src"]
-    }
-  },
+  "compilerOptions": {},
   "include": [
     "src/**/*.ts",
     "src/**/*.vue",
