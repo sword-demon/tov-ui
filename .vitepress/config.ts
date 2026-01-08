@@ -19,6 +19,7 @@ export default defineConfig({
       { text: 'Git', link: '/Git' },
       { text: 'ESlint', link: '/ESlint' },
       { text: 'husky', link: '/READ' },
+      { text: '样式', link: '/Style' },
     ],
 
     sidebar: {
