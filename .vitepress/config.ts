@@ -8,6 +8,7 @@ export default defineConfig({
     // 路径映射关系
     'docs/(.*)': '(.*)',
     'packages/tov-ui/src/:comp/(.*)': 'components/:comp/(.*)',
+    'packages/utils/src/(.*)': 'utils/(.*)',
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -27,6 +28,12 @@ export default defineConfig({
         {
           text: '按钮',
           link: '/components/button/',
+        },
+      ],
+      '/utils/': [
+        {
+          text: 'genClass',
+          link: '/utils/gen-class',
         },
       ],
     },
