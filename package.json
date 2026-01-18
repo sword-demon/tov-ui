@@ -20,6 +20,7 @@
     "eslint": "^9.39.2",
     "esno": "^4.8.0",
     "husky": "^9.1.7",
+    "less": "^4.5.1",
     "lint-staged": "^16.2.7",
     "typescript": "~5.9.3",
     "vite": "npm:rolldown-vite@7.2.5",
